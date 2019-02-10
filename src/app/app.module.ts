@@ -4,16 +4,21 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
+import { UsersComponent } from "./users/users.component";
 
 const routes: Routes = [
   {
     path: "",
-    component: HomeComponent  
+    component: HomeComponent
+  },
+  {
+    path: "users",
+    component: UsersComponent
   }
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, UsersComponent],
   imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent]

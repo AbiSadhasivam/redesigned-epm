@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">REDESIGNED EPM</a>
+  <a class="navbar-brand" href="#">EPM</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -14,19 +14,18 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="users/add">
+        <a class="nav-link" [routerLink]="['/epm', 'users']">
           Manage Users
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Manage Shifts</a>
+        <a class="nav-link" [routerLink]="['/epm', 'shifts']">Manage Shifts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Report</a>
+        <a class="nav-link" [routerLink]="['/epm', 'reports']">Report</a>
       </li>
     </ul>
   </div>
 </nav>
-<!-- <router-outlet name="main"></router-outlet> -->
-
+<router-outlet></router-outlet>

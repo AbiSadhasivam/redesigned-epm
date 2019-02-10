@@ -1,0 +1,65 @@
+.home-ctr {
+  align-items: center;
+  background: #ff8a65;
+  box-shadow: 0px 3px 27px -7px rgba(0, 0, 0, 0.78);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-ctr {
+  background: #fff;
+  height: 400px;
+  width: 400px;
+}
+
+.login-form {
+  margin: 0 auto;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+}
+
+.login .form-item {
+  height: 60px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.login input {
+  background: #eee;
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0 10px;
+  outline: none;
+  width: 100%;
+}
+
+.login .button {
+  align-items: center;
+  background: #ff8a65;
+  color: #fff;
+  display: flex;
+  font-size: 20px;
+  height: 60px;
+  justify-content: center;
+  margin: 20px 0;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.login a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.login ::-webkit-input-placeholder {
+  color: #999;
+  font-size: 14px;
+}

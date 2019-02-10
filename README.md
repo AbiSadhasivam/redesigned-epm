@@ -33,3 +33,15 @@ Go to server folder and follow the procedures below
 1. npm install
 2. npm start - this starts using node
 3. npm run forever - this starts the server using nodemon
+
+
+MongoDB setup
+
+1. Install MongoDB
+2. Run C:\Program Files\MongoDB\Server\4.0\bin\Mongod
+3. Download Studio3T. This is a Mongoclient to visualize the data table
+
+Testing Routes
+
+1. Install Postman : https://www.getpostman.com/
+2. For sample  : http://localhost:3000/users/ : Try this in postman it should return 'getUser: Yet to be implemented'

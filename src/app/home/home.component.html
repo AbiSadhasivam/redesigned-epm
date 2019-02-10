@@ -1,17 +1,23 @@
-<div class="home-ctr">
-  <div class="login login-ctr">
-    <div class="login-form">
-      <div class="login form-item">
-        <input type="text" placeholder="Username" />
-      </div>
-      <div class="login form-item">
-        <input type="password" placeholder="Password" />
-      </div>
-      <div class="login button" >
-        <a routerLink="/users">
-        Login
-        </a>
-      </div>
+<div class="container-fluid h-100 p-0">
+  <div class="d-flex h-100 align-items-center justify-content-center login-ctr">
+    <div class="card login-hldr rounded-0">
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control rounded-0"
+                placeholder="Username">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control rounded-0"
+                placeholder="Password">
+            </div>
+            <div>
+              <input type="submit" role="button"
+                class="btn btn-styl-1 w-100 rounded-0"
+                value="Login" routerLink="users"/>
+            </div>
+          </form>
+        </div>
     </div>
   </div>
 </div>

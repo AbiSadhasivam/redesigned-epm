@@ -1,5 +1,5 @@
 .btn-styl-1 {
-  background-color: #ff9100;
+  background-color: #ffab00;
   color: white;
 }
 
@@ -7,8 +7,16 @@
   box-shadow: none;
 }
 
+.i-text {
+  min-width: 250px;
+}
+
+.i-text:focus {
+  border-color: #ffab00;
+}
+
 .login-ctr {
-  background-color: #ff9100;
+  background-color: #ffab00;
 }
 
 .login-hldr {

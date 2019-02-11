@@ -16,20 +16,22 @@ const routes: Routes = [
   },
   {
     path: "epm",
-    component: MainComponent
+    component: MainComponent,
+    children: [
+      {
+        path: "users",
+        component: UsersComponent
+      },
+      {
+        path: "shifts",
+        component: ShiftComponent
+      },
+      {
+        path: "reports",
+        component: ReportComponent
+      }
+    ]
   },
-  {
-    path: "epm/users",
-    component: UsersComponent
-  },
-  {
-    path: "epm/shifts",
-    component: ShiftComponent
-  },
-  {
-    path: "epm/reports",
-    component: ReportComponent
-  }
 ];
 
 @NgModule({

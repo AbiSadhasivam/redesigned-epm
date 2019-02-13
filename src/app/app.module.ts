@@ -8,6 +8,7 @@ import { UsersComponent } from "./main/users/users.component";
 import { MainComponent } from './main/main.component';
 import { ShiftComponent } from './main/shift/shift.component';
 import { ReportComponent } from './main/report/report.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {
@@ -35,8 +36,19 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, UsersComponent, MainComponent, ShiftComponent, ReportComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    UsersComponent,
+    MainComponent,
+    ShiftComponent,
+    ReportComponent
+  ],
+  imports: [
+    BrowserModule,
+    NgbModule,
+    RouterModule.forRoot(routes)
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

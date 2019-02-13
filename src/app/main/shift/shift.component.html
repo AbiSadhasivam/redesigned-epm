@@ -1,1 +1,32 @@
-This is shifts page
+<div class="bg-styl-1 px-3">
+  <div class="row justify-content-center">
+    <div class='col-md-6 mt-3'>
+      <div class="form-group">
+        <div class='input-group date' id='datetimepicker6'>
+          <input type='text' class="form-control rounded-0" #datePicker
+            ngbDatepicker #d="ngbDatepicker"
+            (dateSelect)="onDateSelection($event)"
+            [displayMonths]="2"
+            [dayTemplate]="t"
+            outsideDays="hidden" />
+          <ng-template #t let-date let-focused="focused">
+            <span class="custom-day"
+              [class.focused]="focused"
+              [class.range]="isRange(date)"
+              [class.faded]="isHovered(date) || isInside(date)"
+              (mouseenter)="hoveredDate = date"
+              (mouseleave)="hoveredDate = null">
+              {{ date.day }}
+            </span>
+          </ng-template>
+          <div class="input-group-append pointer">
+            <span class="material-icons input-group-text rounded-0"
+              (click)="d.toggle()">
+              date_range
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

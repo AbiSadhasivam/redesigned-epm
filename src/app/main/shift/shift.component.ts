@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-shift',
@@ -10,21 +10,61 @@ export class ShiftComponent implements OnInit {
   hoveredDate: NgbDate;
   fromDate: NgbDate;
   toDate: NgbDate;
+  tableHeader: Array<String>;
   @ViewChild('datePicker') datePicker: ElementRef;
 
   constructor(calendar: NgbCalendar) {
     this.fromDate = calendar.getToday();
     this.toDate = null;
+    this.tableHeader = ['S.No', 'Employee Name'];
   }
 
   ngOnInit() {
     this.datePicker.nativeElement.value = this.toDateFormat(this.fromDate);
   }
 
-  toDateFormat(dateInfo) {
-    let retVal = new Date(dateInfo.year, dateInfo.month - 1, dateInfo.day);
+  addDays(currDate, daysToBeAdded) {
+    let date = new Date(currDate.valueOf());
+
+    date.setDate(date.getDate() + daysToBeAdded);
+
+    return date;
+  }
+
+  getDates(startDate, endDate) {
+    let dates = [];
+    let currentDate = startDate;
+
+    if(!endDate) {
+      dates.push(currentDate);
+    } else {
+      while (currentDate <= endDate) {
+        dates.push(currentDate);
+        currentDate = this.addDays(currentDate, 1);
+      }
+    }
+
+    return dates;
+  }
+
+  updateTableHeader(fromDate: NgbDateStruct, toDate: NgbDateStruct) {
+    let dates = this.getDates(this.getDateObj(fromDate),
+      this.getDateObj(toDate));
     
-    return retVal.toDateString();
+    dates.forEach(function(date) {
+      console.log(date);
+    });
+  }
+
+  getDateObj(dateInfo) {
+    if (!dateInfo) {
+      return null;
+    }
+    return new Date(dateInfo.year, dateInfo.month - 1, dateInfo.day);
+  }
+
+  toDateFormat(dateInfo) {
+    return this.getDateObj(dateInfo).toDateString();
   }
 
   onDateSelection(date: NgbDate) {
@@ -42,7 +82,8 @@ export class ShiftComponent implements OnInit {
       this.fromDate = date;
       element.value = this.toDateFormat(this.fromDate);
     }
-    console.log(this.fromDate, this.toDate);
+    
+    this.updateTableHeader(this.fromDate, this.toDate);
   }
 
   isHovered(date: NgbDate) {

@@ -1,4 +1,5 @@
 <div class="bg-styl-1 px-3">
+  <!--Calendar region-->
   <div class="row justify-content-center">
     <div class='col-md-6 mt-3'>
       <div class="form-group">
@@ -29,4 +30,15 @@
       </div>
     </div>
   </div>
+
+  <!--Report region-->
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let header of tableHeader">
+          {{header}}
+        </th>
+      </tr>
+    </thead>
+  </table>
 </div>

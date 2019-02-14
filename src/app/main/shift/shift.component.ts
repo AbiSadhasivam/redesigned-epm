@@ -10,13 +10,15 @@ export class ShiftComponent implements OnInit {
   hoveredDate: NgbDate;
   fromDate: NgbDate;
   toDate: NgbDate;
+  defaultHeaders: Array<String>;
   tableHeader: Array<String>;
   @ViewChild('datePicker') datePicker: ElementRef;
 
   constructor(calendar: NgbCalendar) {
     this.fromDate = calendar.getToday();
     this.toDate = null;
-    this.tableHeader = ['S.No', 'Employee Name'];
+    this.defaultHeaders = ['S.No', 'Employee Name'];
+    this.tableHeader = this.updateTableHeader(this.fromDate, this.toDate);
   }
 
   ngOnInit() {
@@ -47,13 +49,19 @@ export class ShiftComponent implements OnInit {
     return dates;
   }
 
-  updateTableHeader(fromDate: NgbDateStruct, toDate: NgbDateStruct) {
+  updateTableHeader(fromDate: NgbDateStruct, toDate: NgbDateStruct): Array<String> {
     let dates = this.getDates(this.getDateObj(fromDate),
       this.getDateObj(toDate));
     
     dates.forEach(function(date) {
       console.log(date);
     });
+
+    this.tableHeader = [];
+    this.tableHeader.push.apply(this.tableHeader, this.defaultHeaders);
+    this.tableHeader.push.apply(this.tableHeader, dates);
+
+    return this.tableHeader;
   }
 
   getDateObj(dateInfo) {
@@ -64,7 +72,7 @@ export class ShiftComponent implements OnInit {
   }
 
   toDateFormat(dateInfo) {
-    return this.getDateObj(dateInfo).toDateString();
+    return dateInfo ? this.getDateObj(dateInfo).toDateString() : null;
   }
 
   onDateSelection(date: NgbDate) {

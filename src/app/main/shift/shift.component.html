@@ -1,6 +1,6 @@
-<div class="bg-styl-1 px-3">
+<div class="px-3">
   <!--Calendar region-->
-  <div class="row justify-content-center">
+  <div class="row justify-content-center bg-styl-1">
     <div class='col-md-6 mt-3'>
       <div class="form-group">
         <div class='input-group date' id='datetimepicker6'>
@@ -32,13 +32,28 @@
   </div>
 
   <!--Report region-->
-  <table>
-    <thead>
-      <tr>
-        <th *ngFor="let header of tableHeader">
-          {{header}}
-        </th>
-      </tr>
-    </thead>
-  </table>
+  <div class="w-100">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" *ngFor="let header of tableHeader">
+            {{header.display}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employee;">
+          <td>
+            <p>{{employee.id}}</p>
+          </td>
+          <td>
+            <p>{{employee.name}}</p>
+          </td>
+          <td scope="row" *ngFor="let shift of employee.shiftList">
+            <input type="number" [(ngModel)]="shift.count">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

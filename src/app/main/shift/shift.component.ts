@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgbDate, NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { EmployeeService } from 'src/app/employee.service';
+import * as EmployeeInterface from '../../interface/employee';
 
 @Component({
   selector: 'app-shift',
@@ -10,15 +12,23 @@ export class ShiftComponent implements OnInit {
   hoveredDate: NgbDate;
   fromDate: NgbDate;
   toDate: NgbDate;
-  defaultHeaders: Array<String>;
-  tableHeader: Array<String>;
+  defaultHeaders: Array<{}>;
+  tableHeader: Array<{}>;
+  employee: Array<EmployeeInterface.Employee>;
   @ViewChild('datePicker') datePicker: ElementRef;
 
-  constructor(calendar: NgbCalendar) {
+  constructor(calendar: NgbCalendar, public employeeService: EmployeeService) {
     this.fromDate = calendar.getToday();
     this.toDate = null;
-    this.defaultHeaders = ['S.No', 'Employee Name'];
+    this.defaultHeaders = [{
+      key: 'id',
+      display: 'S.No'
+    }, {
+      key: 'name',
+      display: 'Employee Name'
+    }];
     this.tableHeader = this.updateTableHeader(this.fromDate, this.toDate);
+    this.employee = this.employeeService.employee;
   }
 
   ngOnInit() {
@@ -49,17 +59,24 @@ export class ShiftComponent implements OnInit {
     return dates;
   }
 
-  updateTableHeader(fromDate: NgbDateStruct, toDate: NgbDateStruct): Array<String> {
+  updateTableHeader(fromDate: NgbDateStruct, toDate: NgbDateStruct): Array<{}> {
     let dates = this.getDates(this.getDateObj(fromDate),
       this.getDateObj(toDate));
     
-    dates.forEach(function(date) {
-      console.log(date);
+    dates = dates.map(function(date) {
+      let display = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+      
+      return {
+        key: date.toDateString(),
+        display: display
+      }
     });
 
     this.tableHeader = [];
     this.tableHeader.push.apply(this.tableHeader, this.defaultHeaders);
     this.tableHeader.push.apply(this.tableHeader, dates);
+
+    this.employeeService.updateShiftList(dates);
 
     return this.tableHeader;
   }

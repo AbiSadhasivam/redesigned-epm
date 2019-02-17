@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { ShiftComponent } from './main/shift/shift.component';
 import { ReportComponent } from './main/report/report.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -46,6 +47,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     NgbModule,
     RouterModule.forRoot(routes)
   ],
